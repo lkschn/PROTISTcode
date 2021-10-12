@@ -1,0 +1,1647 @@
+EXTINAPRO                     xtinction of light by algae                 
+EXTINA    ; module name
+123       ; TRswitch
+        17; # input items for segments
+nrSpProt        7.00000     x nr of species to be modelled, DO NOT EDIT.             (dl)                
+SW_fixin_n      0.00000     x switch possible scaling of input, DO NOT EDIT          (-)                 
+Volume         -999.000     x volume of computational cell                           (m3)                
+abcoChl_D1      20            Light absorbance coefficient for chlorophyll           (m2 (g Chl)-1)
+abcoChl_D2      20            Light absorbance coefficient for chlorophyll           (m2 (g Chl)-1)
+abcoChl_G1      20            Light absorbance coefficient for chlorophyll           (m2 (g Chl)-1)  
+abcoChl_G2      20            Light absorbance coefficient for chlorophyll           (m2 (g Chl)-1)      
+abcoChl_C1      20            Light absorbance coefficient for chlorophyll           (m2 (g Chl)-1)
+abcoChl_C2      20            Light absorbance coefficient for chlorophyll           (m2 (g Chl)-1)
+abcoChl_N1      20            Light absorbance coefficient for chlorophyll           (m2 (g Chl)-1)              
+diatChl_1       0.0           diatom cellular-Chl mass                               (gChl/m3)
+diatChl_2       0.0           diatom cellular-Chl mass                               (gChl/m3)
+greenChl_1      0.0           green cellular-Chl mass                                (gChl/m3)
+greenChl_2      0.0           green cellular-Chl mass                                (gChl/m3)
+cmChl_1         0.0           CM cellular-Chl mass                                   (gChl/m3)
+cmChl_2         0.0           CM cellular-Chl mass                                   (gChl/m3)
+ncmChl_1        0.0           NCM cellular-Chl mass                                  (gChl/m3)
+         0; # input items for exchanges
+         1; # output items for segments
+ExtVlPhyt                   x VL extinction by phytoplankton                         (1/m)               
+         0; # output items for exchanges
+         0; # fluxes
+         0; # stoichiometry lines
+         0; # stoichiometry lines dispersion arrays
+         0# stoichiometry lines velocity arrays
+END
+Prot_Atte                     attenuation of light by protist                 
+PROATT    ; module name
+123       ; TRswitch
+         3; # input items for segments
+Rad            -999.000       irradiation at the segment upper-boundary              (W/m2)              
+ExtVl          -999.000       total extinction coefficient visible light             (1/m)               
+Depth          -999.000       depth of segment                                       (m)
+         0; # input items for exchanges
+         4; # output items for segments
+PFD                           from rad to photon flux density                        (umol photon m-2) 
+atten                         attenuation of light by water + plankton Chl           (dl)              
+exat                          -ve exponent of attenuation                            (dl)  
+PARRAD                        photosynthetic active radiation                        (W/m2)
+         0; # output items for exchanges
+         0; # fluxes
+         0; # stoichiometry lines
+         0; # stoichiometry lines dispersion arrays
+         0# stoichiometry lines velocity arrays
+END
+Prot_Dia                      Growth/mortality of diatoms                       
+PRODIA    ; module name
+123       ; TRswitch
+        86; # input items for segments
+maxNrSp_D       2.00000       total nr species implemented in process                (dl)
+nrSp_D          1.00000       nr of species user wants to model                      (dl)                
+nrSpCon_D       37.0000       nr of species dependent items                          (dl)                
+nrInd_D         12.0000       nr of species independent items                        (dl)                
+PO4            -999.000       initial external DIP                                   (gP m-3)
+NH4            -999.000       initial external NH4                                   (gN m-3)
+NO3            -999.000       initial external NO3                                   (gN m-3)
+Si             -999.000       initial external Si                                    (gSi m-3)
+Temp           -999.000       ambient water temperature                              (oC)                
+PFD            -999.000       from rad to photon flux density                        (umol photon m-2) 
+atten          -999.000       attenuation of light by water + plankton Chl           (dl)              
+exat           -999.000       -ve exponent of attenuation                            (dl)              
+diatC_1        -999.000       diatom C-biomass                                       (gC m-3)  
+diatChl_1      -999.000       diatom Chl-biomass                                     (gChl m-3)   
+diatN_1        -999.000       diatom N-biomass                                       (gN m-3)   
+diatP_1        -999.000       diatom P-biomass                                       (gP m-3)   
+diatSi_1       -999.000       diatom Si-biomass                                      (gSi m-3)   
+alpha_D1        7.00E-06      alpha for photosynthesis in protist                    ()
+ChlCm_D1        0.06          maximum cellular Chl:C ratio                           (gChl gC-1)
+ChlCo_D1        0.001         minimum cellular Chl:C ratio                           (gChl gC-1)
+CR_D1           0.05          catabolic respiration quotient                         (dl)
+FrAut_D1        0.3           fraction of mortality to autolysis                     (dl)
+FrDet_D1        0.7           fraction of mortality to detritus                      (dl)
+KtNH4_D1        0.007         Kt for NH4 transport                                   (gN m-3)
+KtNO3_D1        0.007         Kt for NO3 transport                                   (gN m-3)
+KtP_D1          0.031         Kt for DIP transport                                   (gP m-3)
+KtSi_D1         0.028         Kt for Si transport                                    (gSi m-3)
+MrtRT_D1        0.035         mortality at reference temperature                     (dl)
+NCm_D1          0.2           N:C that totally represses NH4 transport               (gN gC-1)
+NCo_D1          0.05          minimum N-quota                                        (gN gC-1)
+NCopt_D1        0.15          N:C for growth under optimal conditions                (gN gC-1)
+NO3Cm_D1        0.16          N:C that totally represses NO3 transport               (gN gC-1)
+NO3Copt_D1      0.14          N:C for growth on NO3 under optimal conditions         (gN gC-1)
+PCm_D1          0.05          PC maximum quota                                       (gP gC-1)
+PCo_D1          0.005         PC minimum quota                                       (gP gC-1)
+PCoNCm_D1       0.12          maximum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCoNCop_D1      0.1           optimum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCopt_D1        0.024         PC optimum quota                                       (gP gC-1)
+PSDOC_D1        0.1           proportion of current PS being leaked as DOC           (dl)
+Q10_D1          1.8           Q10 for UmRT                                           (dl)
+redco_D1        1.71          C respired to support nitrate reduction for NH4        (gC gN-1)
+relPS_D1        3.0           relative PSmax:Umax on phototrophy                     (dl)
+ReUmNH4_D1      0.9           max. growth rate supported by NH4-N:Umax               (dl)
+ReUmNO3_D1      0.8           max. growth rate supported by NO3-N:Umax               (dl)
+RT_D1           10.0          reference temperature for UmRT                         (deg C)
+SiCm_D1         0.2           absolute maximum Si:C (diatom)                         (gSi gC-1)
+SiCo_D1         0.02          optimum Si:C for (diatom) growth                       (gSi gC-1)
+SiCopt_D1       0.1           minimum Si:C (diatom)                                  (gSi gC-1)
+UmRT_D1         0.7           maximum growth rate at reference T                     (d-1) 
+diatC_2         000.000       C-biomass                                              (gC m-3)  
+diatChl_2       000.000       Chl-biomass                                            (gChl m-3)   
+diatN_2         000.000       N-biomass                                              (gN m-3)   
+diatP_2         000.000       P-biomass                                              (gP m-3)   
+diatSi_2        000.000       Si-biomass                                             (gSi m-3)   
+alpha_D2        7.00E-06      alpha for photosynthesis in protist                    ()
+ChlCm_D2        0.06          maximum cellular Chl:C ratio                           (gChl gC-1)
+ChlCo_D2        0.001         minimum cellular Chl:C ratio                           (gChl gC-1)
+CR_D2           0.05          catabolic respiration quotient                         (dl)
+FrAut_D2        0.3           fraction of mortality to autolysis                     (dl)
+FrDet_D2        0.7           fraction of mortality to detritus                      (dl)
+KtNH4_D2        0.007         Kt for NH4 transport                                   (gN m-3)
+KtNO3_D2        0.007         Kt for NO3 transport                                   (gN m-3)
+KtP_D2          0.031         Kt for DIP transport                                   (gP m-3)
+KtSi_D2         0.028         Kt for Si transport                                    (gSi m-3)
+MrtRT_D2        0.035         mortality at reference temperature                     (dl)
+NCm_D2          0.2           N:C that totally represses NH4 transport               (gN gC-1)
+NCo_D2          0.05          minimum N-quota                                        (gN gC-1)
+NCopt_D2        0.15          N:C for growth under optimal conditions                (gN gC-1)
+NO3Cm_D2        0.16          N:C that totally represses NO3 transport               (gN gC-1)
+NO3Copt_D2      0.14          N:C for growth on NO3 under optimal conditions         (gN gC-1)
+PCm_D2          0.05          PC maximum quota                                       (gP gC-1)
+PCo_D2          0.005         PC minimum quota                                       (gP gC-1)
+PCoNCm_D2       0.12          maximum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCoNCop_D2      0.1           optimum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCopt_D2        0.024         PC optimum quota                                       (gP gC-1)
+PSDOC_D2        0.1           proportion of current PS being leaked as DOC           (dl)
+Q10_D2          1.8           Q10 for UmRT                                           (dl)
+redco_D2        1.71          C respired to support nitrate reduction for NH4        (gC gN-1)
+relPS_D2        3.0           relative PSmax:Umax on phototrophy                     (dl)
+ReUmNH4_D2      0.9           max. growth rate supported by NH4-N:Umax               (dl)
+ReUmNO3_D2      0.8           max. growth rate supported by NO3-N:Umax               (dl)
+RT_D2           10.0          reference temperature for UmRT                         (deg C)
+SiCm_D2         0.2           absolute maximum Si:C (diatom)                         (gSi gC-1)
+SiCo_D2         0.02          optimum Si:C for (diatom) growth                       (gSi gC-1)
+SiCopt_D2       0.1           minimum Si:C (diatom)                                  (gSi gC-1)
+UmRT_D2         0.7           maximum growth rate at reference T                     (d-1) 
+         0; # input items for exchanges
+        48; # output items for segments
+NC_D1 
+PC_D1 
+SC_D1 
+ChlC_D1
+UmT_D1 
+BR_D1
+NCu_D1 
+PCu_D1 
+SCu_D1 
+NPSiCu_D1
+upP_D1 
+upNH4_D1 
+upNO3_D1 
+upSi_D1
+PSqm_D1
+PS_D1 
+Cfix_D1 
+synChl_D1
+degChl_D1
+totR_D1 
+Cu_D1
+mrt_D1 
+mrtAut_D1 
+mrtDet_D1
+NC_D2 
+PC_D2 
+SC_D2 
+ChlC_D2
+UmT_D2 
+BR_D2
+NCu_D2 
+PCu_D2 
+SCu_D2 
+NPSiCu_D2
+upP_D2 
+upNH4_D2 
+upNO3_D2 
+upSi_D2
+PSqm_D2
+PS_D2 
+Cfix_D2 
+synChl_D2
+degChl_D2
+totR_D2 
+Cu_D2
+mrt_D2 
+mrtAut_D2 
+mrtDet_D2
+         0; # output items for exchanges
+        44; # fluxes
+dNH4up_D1                      uptake of NH4 into algal biomass                          (gN m-3 d-1)
+dNO3up_D1                      uptake of NO3 into algal biomass                          (gN m-3 d-1)
+dPup_D1                        uptake of PO4 into algal biomass                          (gP m-3 d-1)
+dSiup_D1                       uptake of Si into algal biomass                           (gSi m-3 d-1)
+dCfix_D1                       contribution to biomass growth from C-fixation            (gC m-3 d-1)
+dChlsyn_D1                     synthesis Chl rate of change                              (gChl m-3 d-1)
+dChldeg_D1                     degradation Chl rate of change                            (gChl m-3 d-1)
+dCresp_D1                      total respiration rate                                    (gC m-3 d-1)
+dCleak_D1                      release of DOC                                            (gC m-3 d-1)
+dCvoid_D1                      voiding of C as DOC if NC falls below NCo                 (gC m-3 d-1)
+dNH4out_D1                     PO4 release by regeneration                               (gP m-1 d-1)
+dPout_D1                       NH4 release by regeneration                               (gN m-1 d-1)
+dAutC_D1                       protist-C mortality through Autolysis                     (gC m-3 d-1)        
+dDetC_D1                       protist-C mortality through Detritus                      (gC m-3 d-1)        
+dAutN_D1                       protist-N mortality through Autolysis                     (gN m-3 d-1)        
+dDetN_D1                       protist-N mortality through Detritus                      (gN m-3 d-1)        
+dAutP_D1                       protist-P mortality through Autolysis                     (gP m-3 d-1)        
+dDetP_D1                       protist-P mortality through Detritus                      (gP m-3 d-1)        
+dAutSi_D1                      protist-Si mortality through Autolysis                    (gSi m-3 d-1)       
+dDetSi_D1                      protist-Si mortality through Detritus                     (gSi m-3 d-1)       
+dAutChl_D1                     protist-Chl mortality through Autolysis                   (gChl m-3 d-1)      
+dDetChl_D1                     protist-Chl mortality through Detritus                    (gChl m-3 d-1)
+dNH4up_D2                      uptake of NH4 into algal biomass                          (gN m-3 d-1)
+dNO3up_D2                      uptake of NO3 into algal biomass                          (gN m-3 d-1)
+dPup_D2                        uptake of PO4 into algal biomass                          (gP m-3 d-1)
+dSiup_D2                       uptake of Si into algal biomass                           (gSi m-3 d-1)
+dCfix_D2                       contribution to biomass growth from C-fixation            (gC m-3 d-1)
+dChlsyn_D2                     synthesis Chl rate of change                              (gChl m-3 d-1)
+dChldeg_D2                     degradation Chl rate of change                            (gChl m-3 d-1)
+dCresp_D2                      total respiration rate                                    (gC m-3 d-1)
+dCleak_D2                      release of DOC                                            (gC m-3 d-1)
+dCvoid_D2                      voiding of C as DOC if NC falls below NCo                 (gC m-3 d-1)
+dNH4out_D2                     PO4 release by regeneration                               (gP m-1 d-1)
+dPout_D2                       NH4 release by regeneration                               (gN m-1 d-1)
+dAutC_D2                       protist-C mortality through Autolysis                     (gC m-3 d-1)        
+dDetC_D2                       protist-C mortality through Detritus                      (gC m-3 d-1)        
+dAutN_D2                       protist-N mortality through Autolysis                     (gN m-3 d-1)        
+dDetN_D2                       protist-N mortality through Detritus                      (gN m-3 d-1)        
+dAutP_D2                       protist-P mortality through Autolysis                     (gP m-3 d-1)        
+dDetP_D2                       protist-P mortality through Detritus                      (gP m-3 d-1)        
+dAutSi_D2                      protist-Si mortality through Autolysis                    (gSi m-3 d-1)       
+dDetSi_D2                      protist-Si mortality through Detritus                     (gSi m-3 d-1)       
+dAutChl_D2                     protist-Chl mortality through Autolysis                   (gChl m-3 d-1)      
+dDetChl_D2                     protist-Chl mortality through Detritus                    (gChl m-3 d-1)
+        94; # stoichiometry lines
+NO3         dNO3up_D1     -1.00000
+NH4         dNH4up_D1     -1.00000
+NH4         dNH4out_D1     1.00000
+Si          dSiup_D1      -1.00000
+DOClab      dCleak_D1      1.00000
+DOClab      dCvoid_D1      1.00000
+PO4         dPup_D1       -1.00000
+PO4         dPout_D1       1.00000
+diatC_1     dCresp_D1     -1.00000
+diatC_1     dCfix_D1       1.00000
+diatC_1     dCvoid_D1     -1.00000
+diatC_1     dCleak_D1     -1.00000
+diatChl_1   dChlsyn_D1     1.00000
+diatChl_1   dChldeg_D1    -1.00000
+diatP_1     dPup_D1        1.00000
+diatP_1     dPout_D1      -1.00000
+diatN_1     dNH4up_D1      1.00000
+diatN_1     dNO3up_D1      1.00000
+diatN_1     dNH4out_D1    -1.00000
+diatSi_1    dSiup_D1       1.00000
+diatC_1     dAutC_D1      -1.00000
+POC1        dDetC_D1       1.00000
+POS1        dDetC_D1       0.01700
+diatC_1     dDetC_D1      -1.00000
+NH4         dAutN_D1       1.00000
+diatN_1     dAutN_D1      -1.00000
+PON1        dDetN_D1       1.00000
+diatN_1     dDetN_D1      -1.00000
+PO4         dAutP_D1       1.00000
+diatP_1     dAutP_D1      -1.00000
+POP1        dDetP_D1       1.00000
+diatP_1     dDetP_D1      -1.00000
+Si          dAutSi_D1      1.00000
+diatSi_1    dAutSi_D1     -1.00000
+Opal        dDetSi_D1      1.00000
+diatSi_1    dDetSi_D1     -1.00000
+diatChl_1   dAutChl_D1    -1.00000
+diatChl_1   dDetChl_D1    -1.00000
+ALKA        dPup_D1        1.96800
+ALKA        dNH4up_D1     -4.35700
+ALKA        dNO3up_D1      4.35700
+ALKA        dAutN_D1       4.35700
+ALKA        dAutP_D1      -1.96800
+OXY         dNO3up_D1      4.57100
+OXY         dCfix_D1       2.67000
+OXY         dAutC_D1      -2.67000
+OXY         dCresp_D1     -2.67000
+NO3         dNO3up_D2     -1.00000
+NH4         dNH4up_D2     -1.00000
+NH4         dNH4out_D2     1.00000
+Si          dSiup_D2      -1.00000
+DOClab      dCleak_D2      1.00000
+DOClab      dCvoid_D2      1.00000
+PO4         dPup_D2       -1.00000
+PO4         dPout_D2       1.00000
+diatC_2     dCresp_D2     -1.00000
+diatC_2     dCfix_D2       1.00000
+diatC_2     dCvoid_D2     -1.00000
+diatC_2     dCleak_D2     -1.00000
+diatChl_2   dChlsyn_D2     1.00000
+diatChl_2   dChldeg_D2    -1.00000
+diatP_2     dPup_D2        1.00000
+diatP_2     dPout_D2      -1.00000
+diatN_2     dNH4up_D2      1.00000
+diatN_2     dNO3up_D2      1.00000
+diatN_2     dNH4out_D2    -1.00000
+diatSi_2    dSiup_D2       1.00000
+diatC_2     dAutC_D2      -1.00000
+POC1        dDetC_D2       1.00000
+POS1        dDetC_D2       0.01700
+diatC_2     dDetC_D2      -1.00000
+NH4         dAutN_D2       1.00000
+diatN_2     dAutN_D2      -1.00000
+PON1        dDetN_D2       1.00000
+diatN_2     dDetN_D2      -1.00000
+PO4         dAutP_D2       1.00000
+diatP_2     dAutP_D2      -1.00000
+POP1        dDetP_D2       1.00000
+diatP_2     dDetP_D2      -1.00000
+Si          dAutSi_D2      1.00000
+diatSi_2    dAutSi_D2     -1.00000
+Opal        dDetSi_D2      1.00000
+diatSi_2    dDetSi_D2     -1.00000
+diatChl_2   dAutChl_D2    -1.00000
+diatChl_2   dDetChl_D2    -1.00000
+ALKA        dPup_D2        1.96800
+ALKA        dNH4up_D2     -4.35700
+ALKA        dNO3up_D2      4.35700
+ALKA        dAutN_D2       4.35700
+ALKA        dAutP_D2      -1.96800
+OXY         dNO3up_D2      4.57100
+OXY         dCfix_D2       2.67000
+OXY         dAutC_D2      -2.67000
+OXY         dCresp_D2     -2.67000
+         0; # stoichiometry lines dispersion arrays
+         0# stoichiometry lines velocity arrays
+END
+ProSedD                       Sedimentation diatoms                             
+PROSED    ; module name
+123       ; TRswitch
+        23; # input items for segments
+maxNrSp_D       2.00000       total nr species  (DON'T CHANGE)                       (dl)
+nrSp_D          1.00000       nr of species user wants to model                      (dl)
+nrSpCon_S       7.00000       nr of species dependent items                          (dl)                
+nrInd_S         9.00000       nr of species independent items                        (dl)    
+DELT           -999.000     x timestep for processes                                 (d)                 
+MinDepth       0.100000     x minimum waterdepth for sedimentation/resuspension      (m)    
+TaucSDiat      0.100000     x critical shear stress for sedimentation Diatoms        (N/m2)              
+Tau            -999.000     x total bottom shear stress                              (N/m2)              
+Depth          -999.000     x depth of segment                                       (m)                 
+diatC_1        -999.000       C-biomass                                              (gC m-3)  
+diatChl_1      -999.000       Chl-biomass                                            (gChl m-3)   
+diatN_1        -999.000       N-biomass                                              (gN m-3)   
+diatP_1        -999.000       P-biomass                                              (gP m-3)   
+diatSi_1       -999.000       Si-biomass                                             (gSi m-3)   
+ZSedDia_1       0.00000     x zeroth-order sedimentation flux Diatoms                (gC/m2/d)           
+VSedDia_1       0.10000     x sedimentation velocity Diatoms                         (m/d)  
+diatC_2         000.000       C-biomass                                              (gC m-3)  
+diatChl_2       000.000       Chl-biomass                                            (gChl m-3)   
+diatN_2         000.000       N-biomass                                              (gN m-3)   
+diatP_2         000.000       P-biomass                                              (gP m-3)   
+diatSi_2        000.000       Si-biomass                                             (gSi m-3)   
+ZSedDia_2       0.00000     x zeroth-order sedimentation flux Diatoms                (gC/m2/d)           
+VSedDia_2       0.10000     x sedimentation velocity Diatoms                         (m/d)               
+         2; # input items for exchanges
+VSedDia_1      0.100000       sedimentation velocity Diatoms                         (m/d)  
+VSedDia_2      0.100000       sedimentation velocity Diatoms                         (m/d)        
+        12; # output items for segments
+PSedDiat_2                  x sedimentation probability <0-1> Diatoms                (-)                 
+fSedC_1                     x sedimentation flux Diatoms                             (gC/m2/d)           
+fSedChl_1                   x sedimentation flux Diatoms                             (gChl/m2/d)           
+fSedN_1                     x sedimentation flux Diatoms                             (gN/m2/d)           
+fSedP_1                     x sedimentation flux Diatoms                             (gP/m2/d)           
+fSedSi_1                    x sedimentation flux Diatoms                             (gSi/m2/d)   
+PSedDiat_2                  x sedimentation probability <0-1> Diatoms                (-)                   
+fSedC_2                     x sedimentation flux Diatoms                             (gC/m2/d)           
+fSedChl_2                   x sedimentation flux Diatoms                             (gChl/m2/d)           
+fSedN_2                     x sedimentation flux Diatoms                             (gN/m2/d)           
+fSedP_2                     x sedimentation flux Diatoms                             (gP/m2/d)           
+fSedSi_2                    x sedimentation flux Diatoms                             (gSi/m2/d)          
+         2; # output items for exchanges
+VxSedDia_1                  x sedimentation velocity Diatoms                         (m/s)   
+VxSedDia_2                  x sedimentation velocity Diatoms                         (m/s)                           
+        10; # fluxes
+dSedC_1                     x sedimentation flux Diatoms                             (gC/m3/d)           
+dSedChl_1                   x sedimentation flux Diatoms                             (gChl/m3/d)           
+dSedN_1                     x sedimentation flux Diatoms                             (gN/m3/d)           
+dSedP_1                     x sedimentation flux Diatoms                             (gP/m3/d)           
+dSedSi_1                    x sedimentation flux Diatoms                             (gSi/m3/d)   
+dSedC_2                     x sedimentation flux Diatoms                             (gC/m3/d)           
+dSedChl_2                   x sedimentation flux Diatoms                             (gChl/m3/d)           
+dSedN_2                     x sedimentation flux Diatoms                             (gN/m3/d)           
+dSedP_2                     x sedimentation flux Diatoms                             (gP/m3/d)           
+dSedSi_2                    x sedimentation flux Diatoms                             (gSi/m3/d)               
+        10; # stoichiometry lines
+diatC_1     dSedC_1       -1.00000
+diatChl_1   dSedChl_1     -1.00000
+diatN_1     dSedN_1       -1.00000
+diatP_1     dSedP_1       -1.00000
+diatSi_1    dSedSi_1      -1.00000
+diatC_2     dSedC_2       -1.00000
+diatChl_2   dSedChl_2     -1.00000
+diatN_2     dSedN_2       -1.00000
+diatP_2     dSedP_2       -1.00000
+diatSi_2    dSedSi_2      -1.00000
+         0; # stoichiometry lines dispersion arrays
+        10# stoichiometry lines velocity arrays
+diatC_1     VxSedDia_1     1.00000
+diatChl_1   VxSedDia_1     1.00000
+diatN_1     VxSedDia_1     1.00000
+diatP_1     VxSedDia_1     1.00000
+diatSi_1    VxSedDia_1     1.00000
+diatC_2     VxSedDia_2     1.00000
+diatChl_2   VxSedDia_2     1.00000
+diatN_2     VxSedDia_2     1.00000
+diatP_2     VxSedDia_2     1.00000
+diatSi_2    VxSedDia_2     1.00000
+END
+Prot_Gre                      Growth/mortality of greens                       
+PROGRE    ; module name
+123       ; TRswitch
+        77; # input items for segments
+maxNrSp_G       2.00000       total nr species implemented in process                (dl)
+nrSp_G          1.00000       nr of species user wants to model                      (dl)                
+nrSpCon_G       33.0000       nr of species dependent items                          (dl)                
+nrInd_G         11.0000       nr of species independent items                        (dl)                
+PO4            -999.000       initial external DIP                                   (gP m-3)
+NH4            -999.000       initial external NH4                                   (gN m-3)
+NO3            -999.000       initial external NO3                                   (gN m-3)
+Temp           -999.000       ambient water temperature                              (oC)                
+PFD            -999.000       from rad to photon flux density                        (umol photon m-2) 
+atten          -999.000       attenuation of light by water + plankton Chl           (dl)              
+exat           -999.000       -ve exponent of attenuation                            (dl)       
+greenC_1       -999.000       green C-biomass                                        (gC m-3)  
+greenChl_1     -999.000       green Chl-biomass                                      (gChl m-3)   
+greenN_1       -999.000       green N-biomass                                        (gN m-3)   
+greenP_1       -999.000       green P-biomass                                        (gP m-3)   
+alpha_G1        7.00E-06      alpha for photosynthesis in protist                    ()
+ChlCm_G1        0.06          maximum cellular Chl:C ratio                           (gChl gC-1)
+ChlCo_G1        0.001         minimum cellular Chl:C ratio                           (gChl gC-1)
+CR_G1           0.05          catabolic respiration quotient                         (dl)
+FrAut_G1        0.3           fraction of mortality to autolysis                     (dl)
+FrDet_G1        0.7           fraction of mortality to detritus                      (dl)
+KtNH4_G1        0.007         Kt for NH4 transport                                   (gN m-3)
+KtNO3_G1        0.007         Kt for NO3 transport                                   (gN m-3)
+KtP_G1          0.031         Kt for DIP transport                                   (gP m-3)
+MrtRT_G1        0.035         mortality at reference temperature                     (dl)
+NCm_G1          0.2           N:C that totally represses NH4 transport               (gN gC-1)
+NCo_G1          0.05          minimum N-quota                                        (gN gC-1)
+NCopt_G1        0.15          N:C for growth under optimal conditions                (gN gC-1)
+NO3Cm_G1        0.16          N:C that totally represses NO3 transport               (gN gC-1)
+NO3Copt_G1      0.14          N:C for growth on NO3 under optimal conditions         (gN gC-1)
+PCm_G1          0.05          PC maximum quota                                       (gP gC-1)
+PCo_G1          0.005         PC minimum quota                                       (gP gC-1)
+PCoNCm_G1       0.12          maximum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCoNCop_G1      0.1           optimum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCopt_G1        0.024         PC optimum quota                                       (gP gC-1)
+PSDOC_G1        0.1           proportion of current PS being leaked as DOC           (dl)
+Q10_G1          1.8           Q10 for UmRT                                           (dl)
+redco_G1        1.71          C respired to support nitrate reduction for NH4        (gC gN-1)
+relPS_G1        3.0           relative PSmax:Umax on phototrophy                     (dl)
+ReUmNH4_G1      0.9           max. growth rate supported by NH4-N:Umax               (dl)
+ReUmNO3_G1      0.8           max. growth rate supported by NO3-N:Umax               (dl)
+RT_G1           10.0          reference temperature for UmRT                         (deg C)
+rGreen_G1       10.0          radius of nutrient repleted protist cell               (um)
+UmRT_G1         0.7           maximum growth rate at reference T                     (d-1) 
+greenC_2        000.000       C-biomass                                              (gC m-3)  
+greenChl_2      000.000       Chl-biomass                                            (gChl m-3)   
+greenN_2        000.000       N-biomass                                              (gN m-3)   
+greenP_2        000.000       P-biomass                                              (gP m-3)   
+alpha_G2        7.00E-06      alpha for photosynthesis in protist                    ()
+ChlCm_G2        0.06          maximum cellular Chl:C ratio                           (gChl gC-1)
+ChlCo_G2        0.001         minimum cellular Chl:C ratio                           (gChl gC-1)
+CR_G2           0.05          catabolic respiration quotient                         (dl)
+FrAut_G2        0.3           fraction of mortality to autolysis                     (dl)
+FrDet_G2        0.7           fraction of mortality to detritus                      (dl)
+KtNH4_G2        0.007         Kt for NH4 transport                                   (gN m-3)
+KtNO3_G2        0.007         Kt for NO3 transport                                   (gN m-3)
+KtP_G2          0.031         Kt for DIP transport                                   (gP m-3)
+MrtRT_G2        0.035         mortality at reference temperature                     (dl)
+NCm_G2          0.2           N:C that totally represses NH4 transport               (gN gC-1)
+NCo_G2          0.05          minimum N-quota                                        (gN gC-1)
+NCopt_G2        0.15          N:C for growth under optimal conditions                (gN gC-1)
+NO3Cm_G2        0.16          N:C that totally represses NO3 transport               (gN gC-1)
+NO3Copt_G2      0.14          N:C for growth on NO3 under optimal conditions         (gN gC-1)
+PCm_G2          0.05          PC maximum quota                                       (gP gC-1)
+PCo_G2          0.005         PC minimum quota                                       (gP gC-1)
+PCoNCm_G2       0.12          maximum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCoNCop_G2      0.1           optimum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCopt_G2        0.024         PC optimum quota                                       (gP gC-1)
+PSDOC_G2        0.1           proportion of current PS being leaked as DOC           (dl)
+Q10_G2          1.8           Q10 for UmRT                                           (dl)
+redco_G2        1.71          C respired to support nitrate reduction for NH4        (gC gN-1)
+relPS_G2        3.0           relative PSmax:Umax on phototrophy                     (dl)
+ReUmNH4_G2      0.9           max. growth rate supported by NH4-N:Umax               (dl)
+ReUmNO3_G2      0.8           max. growth rate supported by NO3-N:Umax               (dl)
+RT_G2           10.0          reference temperature for UmRT                         (deg C)
+rGreen_G2       10.0          radius of nutrient repleted protist cell               (um)
+UmRT_G2         0.7           maximum growth rate at reference T                     (d-1) 
+         0; # input items for exchanges
+        44; # output items for segments
+NC_G1 
+PC_G1 
+ChlC_G1
+UmT_G1 
+BR_G1
+NCu_G1 
+PCu_G1 
+NPCu_G1
+mot_G1      
+upP_G1 
+upNH4_G1 
+upNO3_G1 
+PSqm_G1
+PS_G1 
+Cfix_G1 
+synChl_G1
+degChl_G1
+totR_G1 
+Cu_G1
+mrt_G1 
+mrtAut_G1 
+mrtDet_G1
+NC_G2 
+PC_G2 
+ChlC_G2
+UmT_G2 
+BR_G2
+NCu_G2 
+PCu_G2 
+NPCu_G2
+mot_G2      
+upP_G2 
+upNH4_G2 
+upNO3_G2 
+PSqm_G2
+PS_G2 
+Cfix_G2 
+synChl_G2
+degChl_G2
+totR_G2 
+Cu_G2
+mrt_G2 
+mrtAut_G2 
+mrtDet_G2
+         0; # output items for exchanges
+        38; # fluxes
+dNH4up_G1                      uptake of NH4 into algal biomass                          (gN m-3 d-1)
+dNO3up_G1                      uptake of NO3 into algal biomass                          (gN m-3 d-1)
+dPup_G1                        uptake of PO4 into algal biomass                          (gP m-3 d-1)
+dCfix_G1                       contribution to biomass growth from C-fixation            (gC m-3 d-1)
+dChlsyn_G1                     synthesis Chl rate of change                              (gChl m-3 d-1)
+dChldeg_G1                     degradation Chl rate of change                            (gChl m-3 d-1)
+dCresp_G1                      total respiration rate                                    (gC m-3 d-1)
+dCleak_G1                      release of DOC                                            (gC m-3 d-1)
+dCvoid_G1                      voiding of C as DOC if NC falls below NCo                 (gC m-3 d-1)
+dNH4out_G1                     PO4 release by regeneration                               (gP m-1 d-1)
+dPout_G1                       NH4 release by regeneration                               (gN m-1 d-1)
+dAutC_G1                       protist-C mortality through Autolysis                     (gC m-3 d-1)        
+dDetC_G1                       protist-C mortality through Detritus                      (gC m-3 d-1)        
+dAutN_G1                       protist-N mortality through Autolysis                     (gN m-3 d-1)        
+dDetN_G1                       protist-N mortality through Detritus                      (gN m-3 d-1)        
+dAutP_G1                       protist-P mortality through Autolysis                     (gP m-3 d-1)        
+dDetP_G1                       protist-P mortality through Detritus                      (gP m-3 d-1)        
+dAutChl_G1                     protist-Chl mortality through Autolysis                   (gChl m-3 d-1)      
+dDetChl_G1                     protist-Chl mortality through Detritus                    (gChl m-3 d-1)
+dNH4up_G2                      uptake of NH4 into algal biomass                          (gN m-3 d-1)
+dNO3up_G2                      uptake of NO3 into algal biomass                          (gN m-3 d-1)
+dPup_G2                        uptake of PO4 into algal biomass                          (gP m-3 d-1)
+dCfix_G2                       contribution to biomass growth from C-fixation            (gC m-3 d-1)
+dChlsyn_G2                     synthesis Chl rate of change                              (gChl m-3 d-1)
+dChldeg_G2                     degradation Chl rate of change                            (gChl m-3 d-1)
+dCresp_G2                      total respiration rate                                    (gC m-3 d-1)
+dCleak_G2                      release of DOC                                            (gC m-3 d-1)
+dCvoid_G2                      voiding of C as DOC if NC falls below NCo                 (gC m-3 d-1)
+dNH4out_G2                     PO4 release by regeneration                               (gP m-1 d-1)
+dPout_G2                       NH4 release by regeneration                               (gN m-1 d-1)
+dAutC_G2                       protist-C mortality through Autolysis                     (gC m-3 d-1)        
+dDetC_G2                       protist-C mortality through Detritus                      (gC m-3 d-1)        
+dAutN_G2                       protist-N mortality through Autolysis                     (gN m-3 d-1)        
+dDetN_G2                       protist-N mortality through Detritus                      (gN m-3 d-1)        
+dAutP_G2                       protist-P mortality through Autolysis                     (gP m-3 d-1)        
+dDetP_G2                       protist-P mortality through Detritus                      (gP m-3 d-1)        
+dAutChl_G2                     protist-Chl mortality through Autolysis                   (gChl m-3 d-1)      
+dDetChl_G2                     protist-Chl mortality through Detritus                    (gChl m-3 d-1)
+        82; # stoichiometry lines
+NO3         dNO3up_G1     -1.00000
+NH4         dNH4up_G1     -1.00000
+NH4         dNH4out_G1     1.00000
+DOClab      dCleak_G1      1.00000
+DOClab      dCvoid_G1      1.00000
+PO4         dPup_G1       -1.00000
+PO4         dPout_G1       1.00000
+greenC_1    dCresp_G1     -1.00000
+greenC_1    dCfix_G1       1.00000
+greenC_1    dCvoid_G1     -1.00000
+greenC_1    dCleak_G1     -1.00000
+greenChl_1  dChlsyn_G1     1.00000
+greenChl_1  dChldeg_G1    -1.00000
+greenP_1    dPup_G1        1.00000
+greenP_1    dPout_G1      -1.00000
+greenN_1    dNH4up_G1      1.00000
+greenN_1    dNO3up_G1      1.00000
+greenN_1    dNH4out_G1    -1.00000
+greenC_1    dAutC_G1      -1.00000
+POC1        dDetC_G1       1.00000
+POS1        dDetC_G1       0.01700
+greenC_1    dDetC_G1      -1.00000
+NH4         dAutN_G1       1.00000
+greenN_1    dAutN_G1      -1.00000
+PON1        dDetN_G1       1.00000
+greenN_1    dDetN_G1      -1.00000
+PO4         dAutP_G1       1.00000
+greenP_1    dAutP_G1      -1.00000
+POP1        dDetP_G1       1.00000
+greenP_1    dDetP_G1      -1.00000
+greenChl_1  dAutChl_G1    -1.00000
+greenChl_1  dDetChl_G1    -1.00000
+ALKA        dPup_G1        1.96800
+ALKA        dNH4up_G1     -4.35700
+ALKA        dNO3up_G1      4.35700
+ALKA        dAutN_G1       4.35700
+ALKA        dAutP_G1      -1.96800
+OXY         dNO3up_G1      4.57100
+OXY         dCfix_G1       2.67000
+OXY         dAutC_G1      -2.67000
+OXY         dCresp_G1     -2.67000
+NO3         dNO3up_G2     -1.00000
+NH4         dNH4up_G2     -1.00000
+NH4         dNH4out_G2     1.00000
+DOClab      dCleak_G2      1.00000
+DOClab      dCvoid_G2      1.00000
+PO4         dPup_G2       -1.00000
+PO4         dPout_G2       1.00000
+greenC_2    dCresp_G2     -1.00000
+greenC_2    dCfix_G2       1.00000
+greenC_2    dCvoid_G2     -1.00000
+greenC_2    dCleak_G2     -1.00000
+greenChl_2  dChlsyn_G2     1.00000
+greenChl_2  dChldeg_G2    -1.00000
+greenP_2    dPup_G2        1.00000
+greenP_2    dPout_G2      -1.00000
+greenN_2    dNH4up_G2      1.00000
+greenN_2    dNO3up_G2      1.00000
+greenN_2    dNH4out_G2    -1.00000
+greenC_2    dAutC_G2      -1.00000
+POC1        dDetC_G2       1.00000
+POS1        dDetC_G2       0.01700
+greenC_2    dDetC_G2      -1.00000
+NH4         dAutN_G2       1.00000
+greenN_2    dAutN_G2      -1.00000
+PON1        dDetN_G2       1.00000
+greenN_2    dDetN_G2      -1.00000
+PO4         dAutP_G2       1.00000
+greenP_2    dAutP_G2      -1.00000
+POP1        dDetP_G2       1.00000
+greenP_2    dDetP_G2      -1.00000
+greenChl_2  dAutChl_G2    -1.00000
+greenChl_2  dDetChl_G2    -1.00000
+ALKA        dPup_G2        1.96800
+ALKA        dNH4up_G2     -4.35700
+ALKA        dNO3up_G2      4.35700
+ALKA        dAutN_G2       4.35700
+ALKA        dAutP_G2      -1.96800
+OXY         dNO3up_G2      4.57100
+OXY         dCfix_G2       2.67000
+OXY         dAutC_G2      -2.67000
+OXY         dCresp_G2     -2.67000
+         0; # stoichiometry lines dispersion arrays
+         0# stoichiometry lines velocity arrays
+END
+Prot_CM                       Growth/mortality of constitutive mixoplankton                    
+PROTCM    ; module name
+123       ; TRswitch
+       134; # input items for segments
+maxNrSp_C       2.00000       total nr species (DON'T CHANGE)                        (dl)
+nrSp_C          1.00000       nr of species user wants to model                      (dl)                
+nrSpCon_C       41.0000       nr of species dependent items                          (dl)                
+nrInd_C         12.0000       nr of species independent items                        (dl) 
+maxNrPr_C       4.00000       total nr prey species (DON'T CHANGE)                   (dl)
+PO4            -999.000       initial external DIP                                   (gP m-3)
+NH4            -999.000       initial external NH4                                   (gN m-3)
+NO3            -999.000       initial external NO3                                   (gN m-3)
+Temp           -999.000       ambient water temperature                              (oC)                
+PFD            -999.000       from rad to photon flux density                        (umol photon m-2) 
+atten          -999.000       attenuation of light by water + plankton Chl           (dl)              
+exat           -999.000       -ve exponent of attenuation                            (dl)       
+cmC_1          -999.000       CM C-biomass                                           (gC m-3)  
+cmChl_1        -999.000       CM Chl-biomass                                         (gChl m-3)   
+cmN_1          -999.000       CM N-biomass                                           (gN m-3)   
+cmP_1          -999.000       CM P-biomass                                           (gP m-3)
+AEm_C1          0.6           maximum assimilation efficiency (AE)                   (dl)
+AEo_C1          0.3           minimum AE                                             (dl)
+alpha_C1        7.00E-06      alpha for photosynthesis in protist                    ()
+Ccell_C1        543.995       C content of protist cell                              (pgC cell-1)   
+ChlCm_C1        0.06          maximum cellular Chl:C ratio                           (gChl gC-1)
+ChlCo_C1        0.001         minimum cellular Chl:C ratio                           (gChl gC-1)
+CR_C1           0.05          catabolic respiration quotient                         (dl)
+FrAut_C1        0.3           fraction of mortality to autolysis                     (dl)
+FrDet_C1        0.7           fraction of mortality to detritus                      (dl)
+kAE_C1          1.00E+03      Control of AE in response to prey quality              (dl)
+KtNH4_C1        0.007         Kt for NH4 transport                                   (gN m-3)
+KtNO3_C1        0.007         Kt for NO3 transport                                   (gN m-3)
+KtP_C1          0.031         Kt for DIP transport                                   (gP m-3)
+MrtRT_C1        0.035         mortality at reference temperature                     (dl)
+maxPS_C1        1.0           maximum C to come from PS                              (dl)
+NCm_C1          0.2           N:C that totally represses NH4 transport               (gN gC-1)
+NCo_C1          0.05          minimum N-quota                                        (gN gC-1)
+NCopt_C1        0.15          N:C for growth under optimal conditions                (gN gC-1)
+NO3Cm_C1        0.16          N:C that totally represses NO3 transport               (gN gC-1)
+NO3Copt_C1      0.14          N:C for growth on NO3 under optimal conditions         (gN gC-1)
+optCR_C1        0.1           proportion of prey captured by starved Zoo             (dl)
+PCm_C1          0.05          PC maximum quota                                       (gP gC-1)
+PCo_C1          0.005         PC minimum quota                                       (gP gC-1)
+PCoNCm_C1       0.12          maximum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCoNCop_C1      0.1           optimum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCopt_C1        0.024         PC optimum quota                                       (gP gC-1)
+PSDOC_C1        0.1           proportion of current PS being leaked as DOC           (dl)
+Q10_C1          1.8           Q10 for UmRT                                           (dl)
+rCM_C1          10.0          radius of nutrient repleted protist cell               (um)
+redco_C1        1.71          C respired to support nitrate reduction for NH4        (gC gN-1)
+relPhag_C1      0.5           relative phagotrophy in night:day                      (dl)
+relPS_C1        3.0           relative PSmax:Umax on phototrophy                     (dl)
+ReUmNH4_C1      0.9           max. growth rate supported by NH4-N:Umax               (dl)
+ReUmNO3_C1      0.8           max. growth rate supported by NO3-N:Umax               (dl)
+RT_C1           10.0          reference temperature for UmRT                         (deg C)
+SDA_C1          0.3           specific dynamic action                                (dl)
+UmRT_C1         0.7           maximum growth rate at reference T                     (d-1) 
+cmC_2           000.000       C-biomass                                              (gC m-3)  
+cmChl_2         000.000       Chl-biomass                                            (gChl m-3)   
+cmN_2           000.000       N-biomass                                              (gN m-3)   
+cmP_2           000.000       P-biomass                                              (gP m-3)
+AEm_C2          0.6           maximum assimilation efficiency (AE)                   (dl)
+AEo_C2          0.3           minimum AE                                             (dl)
+alpha_C2        7.00E-06      alpha for photosynthesis in protist                    ()
+Ccell_C2        543.995       C content of protist cell                              (pgC cell-1)   
+ChlCm_C2        0.06          maximum cellular Chl:C ratio                           (gChl gC-1)
+ChlCo_C2        0.001         minimum cellular Chl:C ratio                           (gChl gC-1)
+CR_C2           0.05          catabolic respiration quotient                         (dl)
+FrAut_C2        0.3           fraction of mortality to autolysis                     (dl)
+FrDet_C2        0.7           fraction of mortality to detritus                      (dl)
+kAE_C2          1.00E+03      Control of AE in response to prey quality              (dl)
+KtNH4_C2        0.007         Kt for NH4 transport                                   (gN m-3)
+KtNO3_C2        0.007         Kt for NO3 transport                                   (gN m-3)
+KtP_C2          0.031         Kt for DIP transport                                   (gP m-3)
+MrtRT_C2        0.035         mortality at reference temperature                     (dl)
+maxPS_C2        1.0           maximum C to come from PS                              (dl)
+NCm_C2          0.2           N:C that totally represses NH4 transport               (gN gC-1)
+NCo_C2          0.05          minimum N-quota                                        (gN gC-1)
+NCopt_C2        0.15          N:C for growth under optimal conditions                (gN gC-1)
+NO3Cm_C2        0.16          N:C that totally represses NO3 transport               (gN gC-1)
+NO3Copt_C2      0.14          N:C for growth on NO3 under optimal conditions         (gN gC-1)
+optCR_C2        0.1           proportion of prey captured by starved Zoo             (dl)
+PCm_C2          0.05          PC maximum quota                                       (gP gC-1)
+PCo_C2          0.005         PC minimum quota                                       (gP gC-1)
+PCoNCm_C2       0.12          maximum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCoNCop_C2      0.1           optimum NC when PC is minimum (PCu = 0)                (gN gC-1)
+PCopt_C2        0.024         PC optimum quota                                       (gP gC-1)
+PSDOC_C2        0.1           proportion of current PS being leaked as DOC           (dl)
+Q10_C2          1.8           Q10 for UmRT                                           (dl)
+rCM_C2          10.0          radius of nutrient repleted protist cell               (um)
+redco_C2        1.71          C respired to support nitrate reduction for NH4        (gC gN-1)
+relPhag_C2      0.5           relative phagotrophy in night:day                      (dl)
+relPS_C2        3.0           relative PSmax:Umax on phototrophy                     (dl)
+ReUmNH4_C2      0.9           max. growth rate supported by NH4-N:Umax               (dl)
+ReUmNO3_C2      0.8           max. growth rate supported by NO3-N:Umax               (dl)
+RT_C2           10.0          reference temperature for UmRT                         (deg C)
+SDA_C2          0.3           specific dynamic action                                (dl)
+UmRT_C2         0.7           maximum growth rate at reference T                     (d-1) 
+diatC_1         1.00E-12      C-biomass                                              (gC m-3)  
+diatChl_1       000.000       Chl-biomass                                            (gChl m-3)   
+diatN_1         000.000       N-biomass                                              (gN m-3)   
+diatP_1         000.000       P-biomass                                              (gP m-3)   
+diatSi_1        000.000       Si-biomass                                             (gSi m-3) 
+Ccell_D1        543.995       C content of protist cell                              (pgC cell-1) 
+rDiat_D1        10.0          radius of nutrient repleted protist cell               (um)
+mot_D1          1.00E-12      swimming velocity of diatoms (DON'T CHANGE)            (m s-1)
+PRD1_C1         1.0           handling index of diat 1 by cm 1                       (dl)
+PRD1_C2         1.0           handling index of diat 1 by cm 2                       (dl)
+diatC_2         1.00E-12      C-biomass                                              (gC m-3)  
+diatChl_2       000.000       Chl-biomass                                            (gChl m-3)   
+diatN_2         000.000       N-biomass                                              (gN m-3)   
+diatP_2         000.000       P-biomass                                              (gP m-3)   
+diatSi_2        000.000       Si-biomass                                             (gSi m-3) 
+Ccell_D2        543.995       C content of protist cell                              (pgC cell-1) 
+rDiat_D2        10.0          radius of nutrient repleted protist cell               (um)
+mot_D2          1.00E-12      swimming velocity of diatoms (DON'T CHANGE)            (m s-1)
+PRD2_C1         1.0           handling index of diat 2 by cm 1                       (dl)
+PRD2_C2         1.0           handling index of diat 2 by cm 2                       (dl)
+greenC_1        1.00E-12      C-biomass                                              (gC m-3)  
+greenChl_1      000.000       Chl-biomass                                            (gChl m-3)   
+greenN_1        000.000       N-biomass                                              (gN m-3)   
+greenP_1        000.000       P-biomass                                              (gP m-3)   
+gDumSi_1        0.00000       dummy variable for green Si                            (dl)
+Ccell_G1        543.995       C content of protist cell                              (pgC cell-1) 
+rGreen_G1       10.0          radius of nutrient repleted protist cell               (um)
+mot_G1          1.00E-12      swimming velocity                                      (m s-1)
+PRG1_C1         1.0           handling index of green 1 by cm 1                      (dl) 
+PRG1_C2         1.0           handling index of green 1 by cm 2                      (dl) 
+greenC_2        1.00E-12      C-biomass                                              (gC m-3)  
+greenChl_2      000.000       Chl-biomass                                            (gChl m-3)   
+greenN_2        000.000       N-biomass                                              (gN m-3)   
+greenP_2        000.000       P-biomass                                              (gP m-3)   
+gDumSi_2        0.00000       dummy variable for green Si                            (dl)
+Ccell_G2        543.995       C content of protist cell                              (pgC cell-1) 
+rGreen_G2       10.0          radius of nutrient repleted protist cell               (um)
+mot_G2          1.00E-12      swimming velocity                                      (m s-1)
+PRG2_C1         1.0           handling index of green 2 by cm 1                      (dl) 
+PRG2_C2         1.0           handling index of green 2 by cm 2                      (dl) 
+         0; # input items for exchanges
+        82; # output items for segments
+NC_C1 
+PC_C1 
+ChlC_C1
+UmT_C1 
+BR_C1
+NCu_C1 
+PCu_C1 
+NPCu_C1
+mot_C1      
+upP_C1 
+upNH4_C1 
+upNO3_C1 
+PSqm_C1
+PS_C1 
+Cfix_C1 
+CfixPS_C1
+synChl_C1
+degChl_C1
+sumCP_C1
+ingNC_C1
+ingPC_C1
+ppNC_C1
+ppPC_C1
+stoichP_C1
+opAE_C1
+reqPred_C1
+maxIng_C1
+ingSat_C1
+ingC_C1  
+assC_C1  
+ingN_C1
+ingP_C1
+assN_C1
+assP_C1
+totR_C1 
+Cu_C1
+mrt_C1 
+mrtAut_C1 
+mrtDet_C1
+preyFl_C1
+lInh_C1
+NC_C2 
+PC_C2 
+ChlC_C2
+UmT_C2 
+BR_C2
+NCu_C2 
+PCu_C2 
+NPCu_C2
+mot_C2      
+upP_C2 
+upNH4_C2 
+upNO3_C2 
+PSqm_C2
+PS_C2 
+Cfix_C2 
+CfixPS_C2
+synChl_C2
+degChl_C2
+sumCP_C2
+ingNC_C2
+ingPC_C2
+ppNC_C2
+ppPC_C2
+stoichP_C2
+opAE_C2
+reqPred_C2
+maxIng_C2
+ingSat_C2
+ingC_C2  
+assC_C2  
+ingN_C2
+ingP_C2
+assN_C2
+assP_C2
+totR_C2 
+Cu_C2
+mrt_C2 
+mrtAut_C2 
+mrtDet_C2
+preyFl_C2
+lInh_C2
+         0; # output items for exchanges
+        90; # fluxes
+dNH4up_C1                      uptake of NH4 into algal biomass                          (gN m-3 d-1)
+dNO3up_C1                      uptake of NO3 into algal biomass                          (gN m-3 d-1)
+dPup_C1                        uptake of PO4 into algal biomass                          (gP m-3 d-1)
+dCfix_C1                       contribution to biomass growth from C-fixation            (gC m-3 d-1)
+dChlsyn_C1                     synthesis Chl rate of change                              (gChl m-3 d-1)
+dChldeg_C1                     degradation Chl rate of change                            (gChl m-3 d-1)
+dCresp_C1                      total respiration rate                                    (gC m-3 d-1)
+dCleak_C1                      release of DOC                                            (gC m-3 d-1)
+dCvoid_C1                      voiding of C as DOC if NC falls below NCo                 (gC m-3 d-1)
+dNH4out_C1                     PO4 release by regeneration                               (gP m-1 d-1)
+dPout_C1                       NH4 release by regeneration                               (gN m-1 d-1)
+dCeat_C1                       assimilation of C from prey                               (gC m-3 d-1)
+dNeat_C1                       assimilation of N from prey                               (gN m-3 d-1)
+dPeat_C1                       assimilation of P from prey                               (gP m-3 d-1)
+dPOCout_C1                     rate of voiding of C as particulates                      (gC m-3 d-1)
+dPONout_C1                     rate of voiding of N as particulates                      (gN m-3 d-1)
+dPOPout_C1                     rate of voiding of P as particulates                      (gP m-3 d-1)
+dAutC_C1                       protist-C mortality through Autolysis                     (gC m-3 d-1)
+dDetC_C1                       protist-C mortality through Detritus                      (gC m-3 d-1)
+dAutN_C1                       protist-N mortality through Autolysis                     (gN m-3 d-1)
+dDetN_C1                       protist-N mortality through Detritus                      (gN m-3 d-1)
+dAutP_C1                       protist-P mortality through Autolysis                     (gP m-3 d-1)
+dDetP_C1                       protist-P mortality through Detritus                      (gP m-3 d-1)
+dAutChl_C1                     protist-Chl mortality through Autolysis                   (gChl m-3 d-1)      
+dDetChl_C1                     protist-Chl mortality through Detritus                    (gChl m-3 d-1)
+dD1C_C1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1Chl_C1                      mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1N_C1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1P_C1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1Si_C1                       mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD2C_C1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2Chl_C1                      mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2N_C1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2P_C1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2Si_C1                       mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dG1C_C1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1Chl_C1                      mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1N_C1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1P_C1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1Si_C1                       mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG2C_C1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2Chl_C1                      mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2N_C1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2P_C1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2Si_C1                       mortality of green 2 through species 1                    (gNut m-3 d-1)
+dNH4up_C2                      uptake of NH4 into algal biomass                          (gN m-3 d-1)
+dNO3up_C2                      uptake of NO3 into algal biomass                          (gN m-3 d-1)
+dPup_C2                        uptake of PO4 into algal biomass                          (gP m-3 d-1)
+dCfix_C2                       contribution to biomass growth from C-fixation            (gC m-3 d-1)
+dChlsyn_C2                     synthesis Chl rate of change                              (gChl m-3 d-1)
+dChldeg_C2                     degradation Chl rate of change                            (gChl m-3 d-1)
+dCresp_C2                      total respiration rate                                    (gC m-3 d-1)
+dCleak_C2                      release of DOC                                            (gC m-3 d-1)
+dCvoid_C2                      voiding of C as DOC if NC falls below NCo                 (gC m-3 d-1)
+dNH4out_C2                     PO4 release by regeneration                               (gP m-1 d-1)
+dPout_C2                       NH4 release by regeneration                               (gN m-1 d-1)
+dCeat_C2                       assimilation of C from prey                               (gC m-3 d-1)
+dNeat_C2                       assimilation of N from prey                               (gN m-3 d-1)
+dPeat_C2                       assimilation of P from prey                               (gP m-3 d-1)
+dPOCout_C2                     rate of voiding of C as particulates                      (gC m-3 d-1)
+dPONout_C2                     rate of voiding of N as particulates                      (gN m-3 d-1)
+dPOPout_C2                     rate of voiding of P as particulates                      (gP m-3 d-1)
+dAutC_C2                       protist-C mortality through Autolysis                     (gC m-3 d-1)
+dDetC_C2                       protist-C mortality through Detritus                      (gC m-3 d-1)
+dAutN_C2                       protist-N mortality through Autolysis                     (gN m-3 d-1)
+dDetN_C2                       protist-N mortality through Detritus                      (gN m-3 d-1)
+dAutP_C2                       protist-P mortality through Autolysis                     (gP m-3 d-1)
+dDetP_C2                       protist-P mortality through Detritus                      (gP m-3 d-1)
+dAutChl_C2                     protist-Chl mortality through Autolysis                   (gChl m-3 d-1)      
+dDetChl_C2                     protist-Chl mortality through Detritus                    (gChl m-3 d-1)
+dD1C_C2                        mortality of diatom 1 through species 2                   (gNut m-3 d-1)
+dD1Chl_C2                      mortality of diatom 1 through species 2                   (gNut m-3 d-1)
+dD1N_C2                        mortality of diatom 1 through species 2                   (gNut m-3 d-1)
+dD1P_C2                        mortality of diatom 1 through species 2                   (gNut m-3 d-1)
+dD1Si_C2                       mortality of diatom 1 through species 2                   (gNut m-3 d-1)
+dD2C_C2                        mortality of diatom 2 through species 2                   (gNut m-3 d-1)
+dD2Chl_C2                      mortality of diatom 2 through species 2                   (gNut m-3 d-1)
+dD2N_C2                        mortality of diatom 2 through species 2                   (gNut m-3 d-1)
+dD2P_C2                        mortality of diatom 2 through species 2                   (gNut m-3 d-1)
+dD2Si_C2                       mortality of diatom 2 through species 2                   (gNut m-3 d-1)
+dG1C_C2                        mortality of green 1 through species 2                    (gNut m-3 d-1)
+dG1Chl_C2                      mortality of green 1 through species 2                    (gNut m-3 d-1)
+dG1N_C2                        mortality of green 1 through species 2                    (gNut m-3 d-1)
+dG1P_C2                        mortality of green 1 through species 2                    (gNut m-3 d-1)
+dG1Si_C2                       mortality of green 1 through species 2                    (gNut m-3 d-1)
+dG2C_C2                        mortality of green 2 through species 2                    (gNut m-3 d-1)
+dG2Chl_C2                      mortality of green 2 through species 2                    (gNut m-3 d-1)
+dG2N_C2                        mortality of green 2 through species 2                    (gNut m-3 d-1)
+dG2P_C2                        mortality of green 2 through species 2                    (gNut m-3 d-1)
+dG2Si_C2                       mortality of green 2 through species 2                    (gNut m-3 d-1)
+       142; # stoichiometry lines
+NO3         dNO3up_C1     -1.00000
+NH4         dNH4up_C1     -1.00000
+NH4         dNH4out_C1     1.00000
+DOClab      dCleak_C1      1.00000
+DOClab      dCvoid_C1      1.00000
+PO4         dPup_C1       -1.00000
+PO4         dPout_C1       1.00000
+cmC_1       dCresp_C1     -1.00000
+cmC_1       dCfix_C1       1.00000
+cmC_1       dCvoid_C1     -1.00000
+cmC_1       dCleak_C1     -1.00000
+cmChl_1     dChlsyn_C1     1.00000
+cmChl_1     dChldeg_C1    -1.00000
+cmP_1       dPup_C1        1.00000
+cmP_1       dPout_C1      -1.00000
+cmN_1       dNH4up_C1      1.00000
+cmN_1       dNO3up_C1      1.00000
+cmN_1       dNH4out_C1    -1.00000
+cmC_1       dAutC_C1      -1.00000
+POC1        dDetC_C1       1.00000
+POS1        dDetC_C1       0.01700
+cmC_1       dDetC_C1      -1.00000
+NH4         dAutN_C1       1.00000
+cmN_1       dAutN_C1      -1.00000
+PON1        dDetN_C1       1.00000
+cmN_1       dDetN_C1      -1.00000
+PO4         dAutP_C1       1.00000
+cmP_1       dAutP_C1      -1.00000
+POP1        dDetP_C1       1.00000
+cmP_1       dDetP_C1      -1.00000
+cmChl_1     dAutChl_C1    -1.00000
+cmChl_1     dDetChl_C1    -1.00000
+ALKA        dPup_C1        1.96800
+ALKA        dNH4up_C1     -4.35700
+ALKA        dNO3up_C1      4.35700
+ALKA        dAutN_C1       4.35700
+ALKA        dAutP_C1      -1.96800
+OXY         dNO3up_C1      4.57100
+OXY         dCfix_C1       2.67000
+OXY         dAutC_C1      -2.67000
+OXY         dCresp_C1     -2.67000
+cmC_1       dCeat_C1       1.00000
+cmN_1       dNeat_C1       1.00000
+cmP_1       dPeat_C1       1.00000
+POC1        dPOCout_C1     1.00000
+PON1        dPONout_C1     1.00000
+POP1        dPOPout_C1     1.00000
+diatC_1     dD1C_C1       -1.00000
+diatChl_1   dD1Chl_C1     -1.00000
+diatN_1     dD1N_C1       -1.00000
+diatP_1     dD1P_C1       -1.00000
+diatSi_1    dD1Si_C1      -1.00000
+Opal        dD1Si_C1       1.00000
+diatC_2     dD2C_C1       -1.00000
+diatChl_2   dD2Chl_C1     -1.00000
+diatN_2     dD2N_C1       -1.00000
+diatP_2     dD2P_C1       -1.00000
+diatSi_2    dD2Si_C1      -1.00000
+Opal        dD2Si_C1       1.00000
+greenC_1    dG1C_C1       -1.00000
+greenChl_1  dG1Chl_C1     -1.00000
+greenN_1    dG1N_C1       -1.00000
+greenP_1    dG1P_C1       -1.00000
+greenSi_1   dG1Si_C1      -1.00000
+Opal        dG1Si_C1       1.00000
+greenC_2    dG2C_C1       -1.00000
+greenChl_2  dG2Chl_C1     -1.00000
+greenN_2    dG2N_C1       -1.00000
+greenP_2    dG2P_C1       -1.00000
+greenSi_2   dG2Si_C1      -1.00000
+Opal        dG2Si_C1       1.00000
+NO3         dNO3up_C2     -1.00000
+NH4         dNH4up_C2     -1.00000
+NH4         dNH4out_C2     1.00000
+DOClab      dCleak_C2      1.00000
+DOClab      dCvoid_C2      1.00000
+PO4         dPup_C2       -1.00000
+PO4         dPout_C2       1.00000
+cmC_2       dCresp_C2     -1.00000
+cmC_2       dCfix_C2       1.00000
+cmC_2       dCvoid_C2     -1.00000
+cmC_2       dCleak_C2     -1.00000
+cmChl_2     dChlsyn_C2     1.00000
+cmChl_2     dChldeg_C2    -1.00000
+cmP_2       dPup_C2        1.00000
+cmP_2       dPout_C2      -1.00000
+cmN_2       dNH4up_C2      1.00000
+cmN_2       dNO3up_C2      1.00000
+cmN_2       dNH4out_C2    -1.00000
+cmC_2       dAutC_C2      -1.00000
+POC1        dDetC_C2       1.00000
+POS1        dDetC_C2       0.01700
+cmC_2       dDetC_C2      -1.00000
+NH4         dAutN_C2       1.00000
+cmN_2       dAutN_C2      -1.00000
+PON1        dDetN_C2       1.00000
+cmN_2       dDetN_C2      -1.00000
+PO4         dAutP_C2       1.00000
+cmP_2       dAutP_C2      -1.00000
+POP1        dDetP_C2       1.00000
+cmP_2       dDetP_C2      -1.00000
+cmChl_2     dAutChl_C2    -1.00000
+cmChl_2     dDetChl_C2    -1.00000
+ALKA        dPup_C2        1.96800
+ALKA        dNH4up_C2     -4.35700
+ALKA        dNO3up_C2      4.35700
+ALKA        dAutN_C2       4.35700
+ALKA        dAutP_C2      -1.96800
+OXY         dNO3up_C2      4.57100
+OXY         dCfix_C2       2.67000
+OXY         dAutC_C2      -2.67000
+OXY         dCresp_C2     -2.67000
+cmC_2       dCeat_C2       1.00000
+cmN_2       dNeat_C2       1.00000
+cmP_2       dPeat_C2       1.00000
+POC1        dPOCout_C2     1.00000
+PON1        dPONout_C2     1.00000
+POP1        dPOPout_C2     1.00000
+diatC_1     dD1C_C2       -1.00000
+diatChl_1   dD1Chl_C2     -1.00000
+diatN_1     dD1N_C2       -1.00000
+diatP_1     dD1P_C2       -1.00000
+diatSi_1    dD1Si_C2      -1.00000
+Opal        dD1Si_C2       1.00000
+diatC_2     dD2C_C2       -1.00000
+diatChl_2   dD2Chl_C2     -1.00000
+diatN_2     dD2N_C2       -1.00000
+diatP_2     dD2P_C2       -1.00000
+diatSi_2    dD2Si_C2      -1.00000
+Opal        dD2Si_C2       1.00000
+greenC_1    dG1C_C2       -1.00000
+greenChl_1  dG1Chl_C2     -1.00000
+greenN_1    dG1N_C2       -1.00000
+greenP_1    dG1P_C2       -1.00000
+greenSi_1   dG1Si_C2      -1.00000
+Opal        dG1Si_C2       1.00000
+greenC_2    dG2C_C2       -1.00000
+greenChl_2  dG2Chl_C2     -1.00000
+greenN_2    dG2N_C2       -1.00000
+greenP_2    dG2P_C2       -1.00000
+greenSi_2   dG2Si_C2      -1.00000
+Opal        dG2Si_C2       1.00000
+         0; # stoichiometry lines dispersion arrays
+         0# stoichiometry lines velocity arrays
+END
+Prot_NCM                       Growth/mortality of non-constitutive mixoplankton                    
+PRONCM    ; module name
+123       ; TRswitch
+        95; # input items for segments
+maxNrSp_N       1.00000       total nr species (DON'T CHANGE)                        (dl)
+nrSp_N          1.00000       nr of species user wants to model                      (dl)                
+nrSpCon_N       32.0000       nr of species dependent items                          (dl)                
+nrInd_N         9.00000       nr of species independent items                        (dl) 
+maxNrPr_N       6.00000       total nr prey species (DON'T CHANGE)                   (dl)
+Temp           -999.000       ambient water temperature                              (oC)                
+PFD            -999.000       from rad to photon flux density                        (umol photon m-2) 
+atten          -999.000       attenuation of light by water + plankton Chl           (dl)              
+exat           -999.000       -ve exponent of attenuation                            (dl)       
+ncmC_1         -999.000       NCM C-biomass                                          (gC m-3)  
+ncmChl_1       -999.000       NCM Chl-biomass                                        (gChl m-3)   
+ncmN_1         -999.000       NCM N-biomass                                          (gN m-3)   
+ncmP_1         -999.000       NCM P-biomass                                          (gP m-3)
+AEm_N1          0.6           maximum assimilation efficiency (AE)                   (dl)
+AEo_N1          0.3           minimum AE                                             (dl)
+alpha_N1        7.00E-06      alpha for photosynthesis in protist                    ()
+Ccell_N1        543.995       C content of protist cell                              (pgC cell-1)   
+ChlCm_N1        0.06          maximum cellular Chl:C ratio                           (gChl gC-1)
+CR_N1           0.05          catabolic respiration quotient                         (dl)
+degChl_N1       0.72          Chl degradation see Ghyoot 2017                        (d-1)
+FrAut_N1        0.3           fraction of mortality to autolysis                     (dl)
+FrDet_N1        0.7           fraction of mortality to detritus                      (dl)
+kAE_N1          1.00E+03      Control of AE in response to prey quality              (dl)
+MrtRT_N1        0.035         mortality at reference temperature                     (dl)
+maxPS_N1        1.0           maximum C to come from PS                              (dl)
+NCm_N1          0.2           N:C that totally represses NH4 transport               (gN gC-1)
+NCo_N1          0.05          minimum N-quota                                        (gN gC-1)
+NCopt_N1        0.15          N:C for growth under optimal conditions                (gN gC-1)
+optCR_N1        0.1           proportion of prey captured by starved Zoo             (dl)
+PCm_N1          0.05          PC maximum quota                                       (gP gC-1)
+PCo_N1          0.005         PC minimum quota                                       (gP gC-1)
+PCopt_N1        0.024         PC optimum quota                                       (gP gC-1)
+PSDOC_N1        0.1           proportion of current PS being leaked as DOC           (dl)
+Q10_N1          1.8           Q10 for UmRT                                           (dl)
+rNCM_N1         10.0          radius of nutrient repleted protist cell               (um)
+redco_N1        1.71          C respired to support nitrate reduction for NH4        (gC gN-1)
+relPhag_N1      0.5           relative phagotrophy night:day                         (dl)
+relPS_N1        1.00          relative PSmax:Umax on phototrophy                     (dl)
+RT_N1           10.0          reference temperature for UmRT                         (deg C)
+SDA_N1          0.3           specific dynamic action                                (dl)
+UmRT_N1         0.7           maximum growth rate at reference T                     (d-1) 
+diatC_1         1.00E-12      C-biomass                                              (gC m-3)  
+diatChl_1       000.000       Chl-biomass                                            (gChl m-3)   
+diatN_1         000.000       N-biomass                                              (gN m-3)   
+diatP_1         000.000       P-biomass                                              (gP m-3)   
+diatSi_1        000.000       Si-biomass                                             (gSi m-3) 
+Ccell_D1        543.995       C content of protist cell                              (pgC cell-1) 
+rDiat_D1        10.0          radius of nutrient repleted protist cell               (um)
+mot_D1          1.00E-12      swimming velocity of diatoms (DON'T CHANGE)            (m s-1)
+PRD1_N1         1.0           handling index of diat 1 by ncm 1                      (dl)
+diatC_2         1.00E-12      C-biomass                                              (gC m-3)  
+diatChl_2       000.000       Chl-biomass                                            (gChl m-3)   
+diatN_2         000.000       N-biomass                                              (gN m-3)   
+diatP_2         000.000       P-biomass                                              (gP m-3)   
+diatSi_2        000.000       Si-biomass                                             (gSi m-3) 
+Ccell_D2        543.995       C content of protist cell                              (pgC cell-1) 
+rDiat_D2        10.0          radius of nutrient repleted protist cell               (um)
+mot_D2          1.00E-12      swimming velocity of diatoms (DON'T CHANGE)            (m s-1)
+PRD2_N1         1.0           handling index of diat 2 by ncm 1                      (dl)
+greenC_1        1.00E-12      C-biomass                                              (gC m-3)  
+greenChl_1      000.000       Chl-biomass                                            (gChl m-3)   
+greenN_1        000.000       N-biomass                                              (gN m-3)   
+greenP_1        000.000       P-biomass                                              (gP m-3)   
+gDumSi_1        0.00000       dummy variable for green Si                            (dl)
+Ccell_G1        543.995       C content of protist cell                              (pgC cell-1) 
+rGreen_G1       10.0          radius of nutrient repleted protist cell               (um)
+mot_G1          1.00E-12      swimming velocity                                      (m s-1)
+PRG1_N1         1.0           handling index of green 1 by ncm 1                     (dl) 
+greenC_2        1.00E-12      C-biomass                                              (gC m-3)  
+greenChl_2      000.000       Chl-biomass                                            (gChl m-3)   
+greenN_2        000.000       N-biomass                                              (gN m-3)   
+greenP_2        000.000       P-biomass                                              (gP m-3)   
+gDumSi_2        0.00000       dummy variable for green Si                            (dl)
+Ccell_G2        543.995       C content of protist cell                              (pgC cell-1) 
+rGreen_G2       10.0          radius of nutrient repleted protist cell               (um)
+mot_G2          1.00E-12      swimming velocity                                      (m s-1)
+PRG2_N1         1.0           handling index of green 2 by ncm 1                     (dl) 
+cmC_1           1.00E-12      C-biomass                                              (gC m-3)  
+cmChl_1         000.000       Chl-biomass                                            (gChl m-3)   
+cmN_1           000.000       N-biomass                                              (gN m-3)   
+cmP_1           000.000       P-biomass                                              (gP m-3)   
+cDumSi_1        0.00000       dummy variable for cm Si                               (dl)
+Ccell_C1        543.995       C content of protist cell                              (pgC cell-1) 
+rCM_C1          10.0          radius of nutrient repleted protist cell               (um)
+mot_C1          1.00E-12      swimming velocity                                      (m s-1)
+PRC1_N1         1.0           handling index of cm 1 by ncm 1                        (dl) 
+cmC_2           1.00E-12      C-biomass                                              (gC m-3)  
+cmChl_2         000.000       Chl-biomass                                            (gChl m-3)   
+cmN_2           000.000       N-biomass                                              (gN m-3)   
+cmP_2           000.000       P-biomass                                              (gP m-3)   
+cDumSi_2        0.00000       dummy variable for cm Si                               (dl)
+Ccell_C2        543.995       C content of protist cell                              (pgC cell-1) 
+rCM_C2          10.0          radius of nutrient repleted protist cell               (um)
+mot_C2          1.00E-12      swimming velocity                                      (m s-1)
+PRC2_N1         1.0           handling index of cm 2 by ncm 1                        (dl) 
+         0; # input items for exchanges
+        34; # output items for segments
+NC_N1 
+PC_N1 
+ChlC_N1
+UmT_N1 
+BR_N1
+NCu_N1 
+PCu_N1 
+NPCu_N1
+mot_N1      
+sumCP_N1
+ingNC_N1
+ingPC_N1
+ppNC_N1
+ppPC_N1
+stoichP_N1
+opAE_N1
+maxIng_N1
+ingSat_N1
+ingC_N1  
+assC_N1  
+ingN_N1
+ingP_N1
+assN_N1
+assP_N1
+PSqm_N1
+PS_N1 
+Cfix_N1 
+totR_N1 
+Cu_N1
+mrt_N1 
+mrtAut_N1 
+mrtDet_N1
+preyFl_N1
+lInh_N1
+         0; # output items for exchanges
+        53; # fluxes
+dCeat_N1                       assimilation of C from prey                               (gC m-3 d-1)
+dNeat_N1                       assimilation of N from prey                               (gN m-3 d-1)
+dPeat_N1                       assimilation of P from prey                               (gP m-3 d-1)
+dCfix_N1                       contribution to biomass growth from C-fixation            (gC m-3 d-1)
+dChldeg_N1                     degradation Chl rate of change                            (gChl m-3 d-1)
+dChlout_N1                     voiding of Chl if maximum is reached                      (gChl m-3 d-1)
+dCresp_N1                      total respiration rate                                    (gC m-3 d-1)
+dCleak_N1                      release of DOC                                            (gC m-3 d-1)
+dCvoid_N1                      voiding of C as DOC if NC falls below NCo                 (gC m-3 d-1)
+dPOCout_N1                     rate of voiding of C as particulates                      (gC m-3 d-1)
+dPONout_N1                     rate of voiding of N as particulates                      (gN m-3 d-1)
+dPOPout_N1                     rate of voiding of P as particulates                      (gP m-3 d-1)
+dNH4out_N1                     PO4 release by regeneration                               (gP m-1 d-1)
+dPout_N1                       NH4 release by regeneration                               (gN m-1 d-1)
+dAutC_N1                       protist-C mortality through Autolysis                     (gC m-3 d-1)
+dDetC_N1                       protist-C mortality through Detritus                      (gC m-3 d-1)
+dAutN_N1                       protist-N mortality through Autolysis                     (gN m-3 d-1)
+dDetN_N1                       protist-N mortality through Detritus                      (gN m-3 d-1)
+dAutP_N1                       protist-P mortality through Autolysis                     (gP m-3 d-1)
+dDetP_N1                       protist-P mortality through Detritus                      (gP m-3 d-1)
+dAutChl_N1                     protist-Chl mortality through Autolysis                   (gChl m-3 d-1)      
+dDetChl_N1                     protist-Chl mortality through Detritus                    (gChl m-3 d-1)
+dChlup_N1                      acquistion of prey Chl through ncm 1                      (gChl m-3 d-1)
+dD1C_N1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1Chl_N1                      mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1N_N1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1P_N1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1Si_N1                       mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD2C_N1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2Chl_N1                      mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2N_N1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2P_N1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2Si_N1                       mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dG1C_N1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1Chl_N1                      mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1N_N1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1P_N1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1Si_N1                       mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG2C_N1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2Chl_N1                      mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2N_N1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2P_N1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2Si_N1                       mortality of green 2 through species 1                    (gNut m-3 d-1)
+dC1C_N1                        mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC1Chl_N1                      mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC1N_N1                        mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC1P_N1                        mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC1Si_N1                       mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC2C_N1                        mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dC2Chl_N1                      mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dC2N_N1                        mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dC2P_N1                        mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dC2Si_N1                       mortality of cm 2 through species 1                       (gNut m-3 d-1)
+        74; # stoichiometry lines
+DOClab      dCleak_N1      1.00000
+DOClab      dCvoid_N1      1.00000
+ncmC_1      dCresp_N1     -1.00000
+ncmC_1      dCfix_N1       1.00000
+ncmC_1      dCvoid_N1     -1.00000
+ncmC_1      dCleak_N1     -1.00000
+ncmChl_1    dChldeg_N1    -1.00000
+ncmChl_1    dChlout_N1    -1.00000
+ncmChl_1    dChlup_N1      1.00000
+ncmC_1      dAutC_N1      -1.00000
+POC1        dDetC_N1       1.00000
+POS1        dDetC_N1       0.01700
+ncmC_1      dDetC_N1      -1.00000
+NH4         dAutN_N1       1.00000
+ncmN_1      dAutN_N1      -1.00000
+PON1        dDetN_N1       1.00000
+ncmN_1      dDetN_N1      -1.00000
+PO4         dAutP_N1       1.00000
+ncmP_1      dAutP_N1      -1.00000
+POP1        dDetP_N1       1.00000
+ncmP_1      dDetP_N1      -1.00000
+ncmChl_1    dAutChl_N1    -1.00000
+ncmChl_1    dDetChl_N1    -1.00000
+ALKA        dAutN_N1       4.35700
+ALKA        dAutP_N1      -1.96800
+OXY         dCfix_N1       2.67000
+OXY         dAutC_N1      -2.67000
+OXY         dCresp_N1     -2.67000
+ncmC_1      dCeat_N1       1.00000
+ncmN_1      dNeat_N1       1.00000
+ncmP_1      dPeat_N1       1.00000
+POC1        dPOCout_N1     1.00000
+PON1        dPONout_N1     1.00000
+POP1        dPOPout_N1     1.00000
+ncmN_1      dNH4out_N1    -1.00000
+NH4         dNH4out_N1     1.00000
+ncmP_1      dPout_N1      -1.00000
+PO4         dPout_N1       1.00000
+diatC_1     dD1C_N1       -1.00000
+diatChl_1   dD1Chl_N1     -1.00000
+diatN_1     dD1N_N1       -1.00000
+diatP_1     dD1P_N1       -1.00000
+diatSi_1    dD1Si_N1      -1.00000
+Opal        dD1Si_N1       1.00000
+diatC_2     dD2C_N1       -1.00000
+diatChl_2   dD2Chl_N1     -1.00000
+diatN_2     dD2N_N1       -1.00000
+diatP_2     dD2P_N1       -1.00000
+diatSi_2    dD2Si_N1      -1.00000
+Opal        dD2Si_N1       1.00000
+greenC_1    dG1C_N1       -1.00000
+greenChl_1  dG1Chl_N1     -1.00000
+greenN_1    dG1N_N1       -1.00000
+greenP_1    dG1P_N1       -1.00000
+greenSi_1   dG1Si_N1      -1.00000
+Opal        dG1Si_N1       1.00000
+greenC_2    dG2C_N1       -1.00000
+greenChl_2  dG2Chl_N1     -1.00000
+greenN_2    dG2N_N1       -1.00000
+greenP_2    dG2P_N1       -1.00000
+greenSi_2   dG2Si_N1      -1.00000
+Opal        dG2Si_N1       1.00000
+cmC_1       dC1C_N1       -1.00000
+cmChl_1     dC1Chl_N1     -1.00000
+cmN_1       dC1N_N1       -1.00000
+cmP_1       dC1P_N1       -1.00000
+cmSi_1      dC1Si_N1      -1.00000
+Opal        dC1Si_N1       1.00000
+cmC_2       dC2C_N1       -1.00000
+cmChl_2     dC2Chl_N1     -1.00000
+cmN_2       dC2N_N1       -1.00000
+cmP_2       dC2P_N1       -1.00000
+cmSi_2      dC2Si_N1      -1.00000
+Opal        dC2Si_N1       1.00000
+         0; # stoichiometry lines dispersion arrays
+         0# stoichiometry lines velocity arrays
+END
+Prot_Zoo                      Growth/mortality of protozooplankton                       
+PROZOO    ; module name
+123       ; TRswitch
+        92; # input items for segments
+maxNrSp_Z       1.00000       total nr zoo species (DON'T CHANGE)                    (dl)
+nrSp_Z          1.00000       nr of zoo species user wants to model                  (dl)                
+nrSpCon_Z       23.0000       nr of zoo species dependent items                      (dl)                
+nrInd_Z         6.00000       nr of zoo species independent items                    (dl)  
+maxNrPr_Z       7.00000       total nr prey species (DON'T CHANGE)                   (dl)
+Temp           -999.000       ambient water temperature                              (oC)                
+zooC_1         -999.000       protozoo C-biomass                                     (gC m-3)  
+zooN_1         -999.000       protozoo N-biomass                                     (gN m-3)   
+zooP_1         -999.000       protozoo P-biomass                                     (gP m-3)   
+AEm_Z1          0.6           maximum assimilation efficiency (AE)                   (dl)
+AEo_Z1          0.3           minimum AE                                             (dl)
+Ccell_Z1        543.995       C content of protist cell                              (pgC cell-1)
+CR_Z1           0.05          catabolic respiration quotient                         (dl)
+FrAut_Z1        0.300000      fraction of mortality to autolysis                     (dl)   
+FrDet_Z1        0.700000      fraction of mortality to detritus                      (dl)   
+kAE_Z1          1.00E+03      Control of AE in response to prey quality              (dl)
+MrtRT_Z1        0.035         mortality at reference temperature                     (dl)
+NCm_Z1          0.2           N:C that totally represses NH4 transport               (gN gC-1)
+NCo_Z1          0.05          minimum N-quota                                        (gN gC-1)
+NCopt_Z1        0.15          N:C for growth under optimal conditions                (gN gC-1)
+optCR_Z1        0.1           proportion of prey captured by starved Zoo             (dl)
+PCm_Z1          0.05          PC maximum quota                                       (gP gC-1)
+PCo_Z1          0.005         PC minimum quota                                       (gP gC-1)
+PCopt_Z1        0.024         PC optimum quota                                       (gP gC-1)
+Q10_Z1          1.8           Q10 for UmRT                                           (dl)
+RT_Z1           10.0          reference temperature for UmRT                         (deg C)
+rZoo_Z1         10.0          radius of nutrient repleted protist cell               (um)
+SDA_Z1          0.3           specific dynamic action                                (dl)
+UmRT_Z1         0.7           maximum growth rate using NH4-N at reference T         (d-1) 
+diatC_1         1.00E-12      C-biomass                                              (gC m-3)  
+diatChl_1       000.000       Chl-biomass                                            (gChl m-3)   
+diatN_1         000.000       N-biomass                                              (gN m-3)   
+diatP_1         000.000       P-biomass                                              (gP m-3)   
+diatSi_1        000.000       Si-biomass                                             (gSi m-3) 
+Ccell_D1        543.995       C content of protist cell                              (pgC cell-1) 
+rDiat_D1        10.0          radius of nutrient repleted protist cell               (um)
+mot_D1          1.00E-12      swimming velocity of diatoms (DON'T CHANGE)            (m s-1)
+PRD1_Z1         1.0           handling index of diat 1 by pred 1                     (dl)
+diatC_2         1.00E-12      C-biomass                                              (gC m-3)  
+diatChl_2       000.000       Chl-biomass                                            (gChl m-3)   
+diatN_2         000.000       N-biomass                                              (gN m-3)   
+diatP_2         000.000       P-biomass                                              (gP m-3)   
+diatSi_2        000.000       Si-biomass                                             (gSi m-3) 
+Ccell_D2        543.995       C content of protist cell                              (pgC cell-1) 
+rDiat_D2        10.0          radius of nutrient repleted protist cell               (um)
+mot_D2          1.00E-12      swimming velocity of diatoms (DON'T CHANGE)            (m s-1)
+PRD2_Z1         1.0           handling index of diat 2 by pred 1                     (dl)
+greenC_1        1.00E-12      C-biomass                                              (gC m-3)  
+greenChl_1      000.000       Chl-biomass                                            (gChl m-3)   
+greenN_1        000.000       N-biomass                                              (gN m-3)   
+greenP_1        000.000       P-biomass                                              (gP m-3)   
+gDumSi_1        0.00000       dummy variable for green Si                            (dl)
+Ccell_G1        543.995       C content of protist cell                              (pgC cell-1) 
+rGreen_G1       10.0          radius of nutrient repleted protist cell               (um)
+mot_G1          1.00E-12      swimming velocity                                      (m s-1)
+PRG1_Z1         1.0           handling index of green 1 by pred 1                    (dl) 
+greenC_2        1.00E-12      C-biomass                                              (gC m-3)  
+greenChl_2      000.000       Chl-biomass                                            (gChl m-3)   
+greenN_2        000.000       N-biomass                                              (gN m-3)   
+greenP_2        000.000       P-biomass                                              (gP m-3)   
+gDumSi_2        0.00000       dummy variable for green Si                            (gSi m-3)
+Ccell_G2        543.995       C content of protist cell                              (pgC cell-1) 
+rGreen_G2       10.0          radius of nutrient repleted protist cell               (um)
+mot_G2          1.00E-12      swimming velocity                                      (m s-1)
+PRG2_Z1         1.0           handling index of green 2 by pred 1                    (dl) 
+cmC_1           1.00E-12      C-biomass                                              (gC m-3)  
+cmChl_1         000.000       Chl-biomass                                            (gChl m-3)   
+cmN_1           000.000       N-biomass                                              (gN m-3)   
+cmP_1           000.000       P-biomass                                              (gP m-3)   
+cDumSi_1        0.00000       dummy variable for green Si                            (dl)
+Ccell_C1        543.995       C content of protist cell                              (pgC cell-1) 
+rGreen_C1       10.0          radius of nutrient repleted protist cell               (um)
+mot_C1          1.00E-12      swimming velocity                                      (m s-1)
+PRC1_Z1         1.0           handling index of green 2 by pred 1                    (dl) 
+cmC_2           1.00E-12      C-biomass                                              (gC m-3)  
+cmChl_2         000.000       Chl-biomass                                            (gChl m-3)   
+cmN_2           000.000       N-biomass                                              (gN m-3)   
+cmP_2           000.000       P-biomass                                              (gP m-3)   
+cDumSi_2        0.00000       dummy variable for green Si                            (dl)
+Ccell_C2        543.995       C content of protist cell                              (pgC cell-1) 
+rGreen_C2       10.0          radius of nutrient repleted protist cell               (um)
+mot_C2          1.00E-12      swimming velocity                                      (m s-1)
+PRC2_Z1         1.0           handling index of green 2 by pred 1                    (dl) 
+ncmC_1          1.00E-12      C-biomass                                              (gC m-3)  
+ncmChl_1        000.000       Chl-biomass                                            (gChl m-3)   
+ncmN_1          000.000       N-biomass                                              (gN m-3)   
+ncmP_1          000.000       P-biomass                                              (gP m-3)   
+nDumSi_1        0.00000       dummy variable for green Si                            (dl)
+Ccell_N1        543.995       C content of protist cell                              (pgC cell-1) 
+rNCM_N1         10.0          radius of nutrient repleted protist cell               (um)
+mot_N1          1.00E-12      swimming velocity                                      (m s-1)
+PRN1_Z1         1.0           handling index of ncm 2 by pred 1                      (dl) 
+         0; # input items for exchanges
+        29; # output items for segments
+NC_Z1
+PC_Z1
+UmT_Z1
+BR_Z1
+NCu_Z1
+PCu_Z1
+NPCu_Z1
+motZoo_Z1
+sumCP_Z1
+ingNC_Z1
+ingPC_Z1
+ppNC_Z1
+ppPC_Z1
+stoichP_Z1
+opAE_Z1
+maxIng_Z1
+ingSat_Z1
+ingC_Z1  
+assC_Z1  
+ingN_Z1
+ingP_Z1
+assN_Z1
+assP_Z1
+totR_Z1
+Cu_Z1
+mrt_Z1
+mrtAut_Z1
+mrtDet_Z1
+preyFl_Z1
+         0; # output items for exchanges
+        50; # fluxes
+dCeat_Z1                       assimilation of C from prey                               (gC m-3 d-1)
+dNeat_Z1                       assimilation of N from prey                               (gN m-3 d-1)
+dPeat_Z1                       assimilation of P from prey                               (gP m-3 d-1)
+dCresp_Z1                      total respiration rate                                    (gC m-3 d-1)
+dPOCout_Z1                     rate of voiding of C as particulates                      (gC m-3 d-1)
+dPONout_Z1                     rate of voiding of N as particulates                      (gN m-3 d-1)
+dPOPout_Z1                     rate of voiding of P as particulates                      (gP m-3 d-1)
+dNH4out_Z1                     PO4 release by regeneration                               (gP m-1 d-1)
+dPout_Z1                       NH4 release by regeneration                               (gN m-1 d-1)
+dAutC_Z1                       protist-C mortality through Autolysis                     (gC m-3 d-1)
+dDetC_Z1                       protist-C mortality through Detritus                      (gC m-3 d-1)
+dAutN_Z1                       protist-N mortality through Autolysis                     (gN m-3 d-1)
+dDetN_Z1                       protist-N mortality through Detritus                      (gN m-3 d-1)
+dAutP_Z1                       protist-P mortality through Autolysis                     (gP m-3 d-1)
+dDetP_Z1                       protist-P mortality through Detritus                      (gP m-3 d-1)
+dD1C_Z1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1Chl_Z1                      mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1N_Z1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1P_Z1                        mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD1Si_Z1                       mortality of diatom 1 through species 1                   (gNut m-3 d-1)
+dD2C_Z1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2Chl_Z1                      mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2N_Z1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2P_Z1                        mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dD2Si_Z1                       mortality of diatom 2 through species 1                   (gNut m-3 d-1)
+dG1C_Z1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1Chl_Z1                      mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1N_Z1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1P_Z1                        mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG1Si_Z1                       mortality of green 1 through species 1                    (gNut m-3 d-1)
+dG2C_Z1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2Chl_Z1                      mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2N_Z1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2P_Z1                        mortality of green 2 through species 1                    (gNut m-3 d-1)
+dG2Si_Z1                       mortality of green 2 through species 1                    (gNut m-3 d-1)
+dC1C_Z1                        mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC1Chl_Z1                      mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC1N_Z1                        mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC1P_Z1                        mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC1Si_Z1                       mortality of cm 1 through species 1                       (gNut m-3 d-1)
+dC2C_Z1                        mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dC2Chl_Z1                      mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dC2N_Z1                        mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dC2P_Z1                        mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dC2Si_Z1                       mortality of cm 2 through species 1                       (gNut m-3 d-1)
+dN1C_Z1                        mortality of ncm 1 through species 1                      (gNut m-3 d-1)
+dN1Chl_Z1                      mortality of ncm 1 through species 1                      (gNut m-3 d-1)
+dN1N_Z1                        mortality of ncm 1 through species 1                      (gNut m-3 d-1)
+dN1P_Z1                        mortality of ncm 1 through species 1                      (gNut m-3 d-1)
+dN1Si_Z1                       mortality of ncm 1 through species 1                      (gNut m-3 d-1)
+        69; # stoichiometry lines
+zooC_1      dCeat_Z1       1.00000
+zooN_1      dNeat_Z1       1.00000
+zooP_1      dPeat_Z1       1.00000
+zooC_1      dCresp_Z1     -1.00000
+zooN_1      dNH4out_Z1    -1.00000
+NH4         dNH4out_Z1     1.00000
+zooP_1      dPout_Z1      -1.00000
+PO4         dPout_Z1       1.00000
+POC1        dPOCout_Z1     1.00000
+PON1        dPONout_Z1     1.00000
+POP1        dPOPout_Z1     1.00000
+zooC_1      dAutC_Z1      -1.00000
+POC1        dDetC_Z1       1.00000
+POS1        dDetC_Z1       0.01700
+zooC_1      dDetC_Z1      -1.00000
+NH4         dAutN_Z1       1.00000
+zooN_1      dAutN_Z1      -1.00000
+PON1        dDetN_Z1       1.00000
+zooN_1      dDetN_Z1      -1.00000
+PO4         dAutP_Z1       1.00000
+zooP_1      dAutP_Z1      -1.00000
+POP1        dDetP_Z1       1.00000
+zooP_1      dDetP_Z1      -1.00000
+ALKA        dAutN_Z1       4.35700
+ALKA        dAutP_Z1      -1.96800
+OXY         dAutC_Z1      -2.67000
+OXY         dCresp_Z1     -2.67000
+diatC_1     dD1C_Z1       -1.00000
+diatChl_1   dD1Chl_Z1     -1.00000
+diatN_1     dD1N_Z1       -1.00000
+diatP_1     dD1P_Z1       -1.00000
+diatSi_1    dD1Si_Z1      -1.00000
+Opal        dD1Si_Z1       1.00000
+diatC_2     dD2C_Z1       -1.00000
+diatChl_2   dD2Chl_Z1     -1.00000
+diatN_2     dD2N_Z1       -1.00000
+diatP_2     dD2P_Z1       -1.00000
+diatSi_2    dD2Si_Z1      -1.00000
+Opal        dD2Si_Z1       1.00000
+greenC_1    dG1C_Z1       -1.00000
+greenChl_1  dG1Chl_Z1     -1.00000
+greenN_1    dG1N_Z1       -1.00000
+greenP_1    dG1P_Z1       -1.00000
+greenSi_1   dG1Si_Z1      -1.00000
+Opal        dG1Si_Z1       1.00000
+greenC_2    dG2C_Z1       -1.00000
+greenChl_2  dG2Chl_Z1     -1.00000
+greenN_2    dG2N_Z1       -1.00000
+greenP_2    dG2P_Z1       -1.00000
+greenSi_2   dG2Si_Z1      -1.00000
+Opal        dG2Si_Z1       1.00000
+cmC_1       dC1C_Z1       -1.00000
+cmChl_1     dC1Chl_Z1     -1.00000
+cmN_1       dC1N_Z1       -1.00000
+cmP_1       dC1P_Z1       -1.00000
+cmSi_1      dC1Si_Z1      -1.00000
+Opal        dC1Si_Z1       1.00000
+cmC_2       dC2C_Z1       -1.00000
+cmChl_2     dC2Chl_Z1     -1.00000
+cmN_2       dC2N_Z1       -1.00000
+cmP_2       dC2P_Z1       -1.00000
+cmSi_2      dC2Si_Z1      -1.00000
+Opal        dC2Si_Z1       1.00000
+ncmC_1      dN1C_Z1       -1.00000
+ncmChl_1    dN1Chl_Z1     -1.00000
+ncmN_1      dN1N_Z1       -1.00000
+ncmP_1      dN1P_Z1       -1.00000
+ncmSi_1     dN1Si_Z1      -1.00000
+Opal        dN1Si_Z1       1.00000
+         0; # stoichiometry lines dispersion arrays
+         0# stoichiometry lines velocity arrays
+END
